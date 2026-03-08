@@ -1,6 +1,6 @@
 source train.env
 
-dir_name="AMASS_test"
+dir_name="AMASS_ACCAD"
 gmr_tgt_dir="data/gmr_retargeted/${dir_name}"
 holo_retargeted_dir="data/holomotion_retargeted/processed_datasets/${dir_name}"
 

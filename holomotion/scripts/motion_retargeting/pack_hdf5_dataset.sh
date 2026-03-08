@@ -1,8 +1,8 @@
 source train.env
 export CUDA_VISIBLE_DEVICES=""
 
-holomotion_retargeted_dirs='["data/holomotion_retargeted/processed_datasets/AMASS_test"]'
-hdf5_root="data/hdf5_datasets/processed_datasets/h5_AMASS_test"
+holomotion_retargeted_dirs='["data/holomotion_retargeted/processed_datasets/AMASS_ACCAD"]'
+hdf5_root="data/hdf5_datasets/processed_datasets/h5_AMASS_ACCAD"
 
 robot_config="unitree/G1/29dof/29dof_training_isaaclab"
 ${Train_CONDA_PREFIX}/bin/python \

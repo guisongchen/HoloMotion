@@ -1,0 +1,41 @@
+# @package _global_
+
+defaults:
+  - /training: train_base
+  - /algo: ppo
+  - /robot: unitree/G1/29dof/29dof_training_isaaclab
+  - /env: motion_tracking
+  - /env/terminations: termination_motion_tracking
+  - /env/observations: motion_tracking/obs_motion_tracking
+  - /env/rewards: motion_tracking/rew_motion_tracking
+  - /env/domain_randomization: domain_rand_small
+  - /env/terrain: isaaclab_plane  # 使用平地简化训练
+  - /modules: motion_tracking/mlp_motrack_unitree_g1
+
+project_name: HoloMotionMotionTrackingQuick
+
+robot:
+  motion:
+    train_hdf5_roots:
+      - data/hdf5_datasets/processed_datasets/h5_AMASS_ACCAD
+
+algo:
+  config:
+    # 快速验证配置
+    num_learning_iterations: 1000      # 从 300000 减少到 1000
+    save_interval: 100                 # 每 100 次保存
+    log_interval: 1                    # 每 1 次记录日志
+    
+    # 减少环境数加速
+    num_steps_per_env: 24              # 减少步数
+    num_learning_epochs: 2             # 减少 epoch
+    
+    # 快速收敛的学习率
+    actor_learning_rate: 5.0e-4
+    critic_learning_rate: 8.0e-4
+    
+    dynamo_backend: "inductor"
+
+# 使用更少的环境
+num_envs: 512
+headless: true

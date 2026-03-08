@@ -17,7 +17,7 @@ project_name: HoloMotionMotionTracking
 robot:
   motion:
     train_hdf5_roots:
-      - data/hdf5_datasets/processed_datasets/h5_AMASS_test
+      - data/hdf5_datasets/processed_datasets/h5_AMASS_ACCAD
 
 algo:
   config:

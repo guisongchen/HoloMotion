@@ -106,7 +106,13 @@ def load_npz(path: Path) -> SmplSequence:
     trans = _require_key(data, "trans").astype(np.float32)
     betas = _require_key(data, "betas").astype(np.float32)
 
-    fps = float(np.asarray(_require_key(data, "mocap_framerate")))
+    # Try different possible key names for framerate
+    if "mocap_framerate" in data:
+        fps = float(np.asarray(data["mocap_framerate"]))
+    elif "mocap_frame_rate" in data:
+        fps = float(np.asarray(data["mocap_frame_rate"]))
+    else:
+        fps = 50.0  # Default fallback
     gender = str(np.asarray(_require_key(data, "gender")))
 
     return SmplSequence(poses=poses, trans=trans, betas=betas, fps=fps, gender=gender)

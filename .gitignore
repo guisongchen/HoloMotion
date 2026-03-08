@@ -76,3 +76,7 @@ MUJOCO_LOG.TXT
 # macOS system files
 .DS_Store
 **/.DS_Store
+
+# conda environments and temp files
+environments/
+condaenv.*.requirements.txt
